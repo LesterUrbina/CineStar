@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1077279675098",
+    "project_id": "cinestar-login",
+    "storage_bucket": "cinestar-login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077279675098:android:70c842caa9451490154be3",
+        "android_client_info": {
+          "package_name": "idat.edu.cinestar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077279675098-a9jhv3ntqqcu02b9ts4euhm4nd1ifd4m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHotWA_yITsqo3AoW8JfDpgvqL0gyUOxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077279675098-a9jhv3ntqqcu02b9ts4euhm4nd1ifd4m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

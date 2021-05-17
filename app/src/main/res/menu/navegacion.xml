@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/optInicio"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Inicio"/>
+
+    <item android:id="@+id/optCartelera"
+        android:icon="@drawable/ic_baseline_local_movies_24"
+        android:title="Cartelera"/>
+
+    <item android:id="@+id/optProximos"
+        android:icon="@drawable/ic_baseline_movie_filter_24"
+        android:title="Proximos"/>
+
+</menu>

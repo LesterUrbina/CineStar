@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".InicioFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardPrincipal"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="786dp">
+
+            <ImageView
+
+                android:id="@+id/imgRegresion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/regression"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+             <ImageView
+                 app:layout_constraintTop_toBottomOf="@+id/imgRegresion"
+                 android:id="@+id/imgDc"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:adjustViewBounds="true"
+                 android:src="@drawable/dc"/>
+
+            <ImageView
+                android:adjustViewBounds="true"
+                android:src="@drawable/combo1"
+                app:layout_constraintTop_toBottomOf="@id/imgDc"
+                android:id="@+id/combo1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
