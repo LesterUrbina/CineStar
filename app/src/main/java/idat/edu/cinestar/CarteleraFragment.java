@@ -42,14 +42,11 @@ public class CarteleraFragment extends Fragment {
         rcvCartelera.setLayoutManager(new LinearLayoutManager(getContext()));
 
         List<Peliculas> peliculas = new ArrayList<>();
-        peliculas.add(new Peliculas(1,"Avatar","Es una pelicula basada en..",0));
-        peliculas.add(new Peliculas(2,"Fragmento","Es una seria..",0));
-        peliculas.add(new Peliculas(3,"Lobas","Un asesinato por descubrir..",0));
-        peliculas.add(new Peliculas(4,"Lobas","Un asesinato por descubrir..",0));
-        peliculas.add(new Peliculas(5,"Lobas","Un asesinato por descubrir..",0));
-        peliculas.add(new Peliculas(6,"Lobas","Un asesinato por descubrir..",0));
-        peliculas.add(new Peliculas(7,"Lobas","Un asesinato por descubrir..",0));
-        peliculas.add(new Peliculas(8,"Lobas","Un asesinato por descubrir..",0));
+        peliculas.add(new Peliculas(1,"Regresionr","Es una pelicula basada en..",R.drawable.pelicula1));
+        peliculas.add(new Peliculas(2,"Fragmento","Es una seria..",R.drawable.pelicula2));
+        peliculas.add(new Peliculas(3,"Lobas","Un asesinato por descubrir..",R.drawable.pelicula3));
+        peliculas.add(new Peliculas(4,"Avatar","Un asesinato por descubrir..",R.drawable.pelicula4));
+
 
         CarteleraAdapter adapter = new CarteleraAdapter(peliculas);
         rcvCartelera.setAdapter(adapter);

@@ -26,8 +26,8 @@
                 />
 
             <ImageView
+                android:src="@drawable/pelicula3"
                 android:id="@+id/imgPelicula"
-                android:src="@drawable/voverfuturo1"
                 app:layout_constraintTop_toBottomOf="@id/txtPelicula"
                 android:adjustViewBounds="true"
                 android:layout_width="match_parent"
