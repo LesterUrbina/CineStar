@@ -21,7 +21,7 @@ public class JwtDto implements Serializable {
 
     private String nombreUsuario;
 
-    public List<String> authorities;
+    private List<String> authorities;
 
 //    public JwtDto(String token, String nombreUsuario, Collection<? extends GrantedAuthority> authorities) {
 //        this.token = token;
@@ -53,6 +53,13 @@ public class JwtDto implements Serializable {
         this.nombreUsuario = nombreUsuario;
     }
 
+    public List<String> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<String> authorities) {
+        this.authorities = authorities;
+    }
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
 //        return authorities;
 //    }

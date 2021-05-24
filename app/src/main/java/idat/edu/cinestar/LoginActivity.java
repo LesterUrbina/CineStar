@@ -116,9 +116,9 @@ public class LoginActivity extends AppCompatActivity {
                     LinkedTreeMap<String, Object> getMap = (LinkedTreeMap<String, Object>) response.body().getData();
                     JwtDto jwtDto = new JwtDto();
                     jwtDto.setToken((String)getMap.get("token"));
-                    jwtDto.setToken((String)getMap.get("bearer"));
-                    jwtDto.setToken((String)getMap.get("nombreUsuario"));
-                        jwtDto.authorities = (List<String>) getMap.get("authorities");
+                    jwtDto.setBearer((String)getMap.get("bearer"));
+                    jwtDto.setNombreUsuario((String)getMap.get("nombreUsuario"));
+                    jwtDto.setAuthorities((List<String>) getMap.get("authorities"));
                     new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
