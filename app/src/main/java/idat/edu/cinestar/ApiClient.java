@@ -9,31 +9,28 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private Context context;
-    private Retrofit retrofit;
-    public ApiClient(Context context) {
-        this.context =context;
-        retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("http://localhost:8080/")
-                .build();
-    }
+    private static Retrofit retrofit = null;
 
-    private Retrofit getRetrofit()
+    private static final String BASE_URL = "http://192.168.0.21:8080/";
+
+    public static Retrofit getRetrofit(String url)
     {
 
 //        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
 //        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 //
 //        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
+        if (retrofit==null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(url)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
         return retrofit;
     }
 
-
-    public UserService getUserService()
-    {
-        UserService userService = getRetrofit().create(UserService.class);
+    public UserService getUserService() {
+        UserService userService = getRetrofit(BASE_URL).create(UserService.class);
         return userService;
     }
-
 }

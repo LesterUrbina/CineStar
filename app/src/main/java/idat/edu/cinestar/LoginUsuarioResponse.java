@@ -1,23 +1,17 @@
 package idat.edu.cinestar;
 
+import com.google.gson.annotations.SerializedName;
+
 public class LoginUsuarioResponse {
 
-    private String email;
-    private String usuario;
+    @SerializedName("mensaje")
+    private String mensaje;
 
-    public String getEmail() {
-        return email;
+    public String getMensaje() {
+        return mensaje;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 }

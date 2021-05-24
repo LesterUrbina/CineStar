@@ -14,6 +14,8 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import idat.edu.cinestar.dto.JwtDto;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override
@@ -21,7 +23,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
+        JwtDto jwtDto = (JwtDto)getIntent().getSerializableExtra("data");
+        System.out.println("JWT" + jwtDto.toString());
         BottomNavigationView  bnvNavegar = findViewById(R.id.bnvNavegar);
 
         bnvNavegar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -18,11 +18,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.internal.LinkedTreeMap;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+import idat.edu.cinestar.dto.JwtDto;
 import idat.edu.cinestar.dto.LoginUsuario;
+import idat.edu.cinestar.utils.ApiResponse;
+import idat.edu.cinestar.utils.RetrofitUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     private MaterialButton btnLogin;
     private MaterialButton btnSignin;
 
+    private ApiClient apiClient;
+    private Retrofit retrofit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,42 +104,74 @@ public class LoginActivity extends AppCompatActivity {
     public void login()
     {
         LoginUsuario loginUsuario = new LoginUsuario();
-        loginUsuario.setNombreUsuario(edtUsername.getText().toString());
-        loginUsuario.setPassword(edtPassword.getText().toString());
-
-        ApiClient apiClient = new ApiClient(this);
-        System.out.println(loginUsuario);
-        Call<Object> loginUsuarioResponseCall = apiClient.getUserService().userLogin(loginUsuario);
-        loginUsuarioResponseCall.enqueue(new Callback<Object>() {
+        loginUsuario.setUsuario(edtUsername.getText().toString());
+        loginUsuario.setClave(edtPassword.getText().toString());
+        apiClient = new ApiClient();
+        retrofit = RetrofitUtil.getInstance();
+        Call<ApiResponse> loginUsuarioResponseCall = RetrofitUtil.getApiService(UserService.class).userLogin(loginUsuario);
+        loginUsuarioResponseCall.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
-
-                if(response.isSuccessful())
-                {
-                    Toast.makeText(LoginActivity.this, "Login  Exitoso", Toast.LENGTH_LONG);
-                    Object loginUsuarioResponse = response.body();
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    LinkedTreeMap<String, Object> getMap = (LinkedTreeMap<String, Object>) response.body().getData();
+                    JwtDto jwtDto = new JwtDto();
+                    jwtDto.setToken((String)getMap.get("token"));
+                    jwtDto.setToken((String)getMap.get("bearer"));
+                    jwtDto.setToken((String)getMap.get("nombreUsuario"));
+                        jwtDto.authorities = (List<String>) getMap.get("authorities");
                     new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            System.out.println(loginUsuarioResponse);
-//                            startActivity(new Intent(LoginActivity.this,HomeActivity.class)
-//                                    .putExtra("data",loginUsuarioResponse.getUsuario()));
+                            @Override
+                            public void run() {
+                            startActivity(new Intent(LoginActivity.this,HomeActivity.class)
+                                    .putExtra("data", jwtDto));
 
-                        }
-                    }, 700);
+                        }}
+                    , 700);
+                } else {
+                    Toast.makeText(LoginActivity.this, ""+response.code() + response.errorBody(), Toast.LENGTH_LONG).show();
                 }
-                else
-                {
-                    Toast.makeText(LoginActivity.this, "Login  Error", Toast.LENGTH_LONG);
-                }
+
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
 
-                Toast.makeText(LoginActivity.this, "Throwable"+t.getLocalizedMessage(), Toast.LENGTH_LONG);
+                Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
-      });
+        });
+//        loginUsuarioResponseCall.enqueue(new Callback<LoginUsuarioResponse>() {
+//            @Override
+//            public void onResponse(Call<LoginUsuarioResponse> call, Response<LoginUsuarioResponse> response) {
+//                System.out.println("DENTRO DE ONRESPONSE");
+//                System.out.println(response.body().toString());
+//                if(response.isSuccessful())
+//                {
+//                    Toast toast = Toast.makeText(LoginActivity.this, "Login  Exitoso", Toast.LENGTH_LONG);
+//                    toast.show();
+//                    LoginUsuarioResponse loginUsuarioResponse = response.body();
+//                    System.out.println(loginUsuarioResponse);
+////                    new Handler().postDelayed(new Runnable() {
+////                        @Override
+////                        public void run() {
+////                            System.out.println(loginUsuarioResponse);
+//////                            startActivity(new Intent(LoginActivity.this,HomeActivity.class)
+//////                                    .putExtra("data",loginUsuarioResponse.getUsuario()));
+////
+////                        }
+////                    }, 700);
+//                }
+//                else
+//                {
+//                    Toast.makeText(LoginActivity.this, "Login  Error", Toast.LENGTH_LONG).show();
+//                }
+//            }
+
+//            @Override
+//            public void onFailure(Call<LoginUsuarioResponse> call, Throwable t) {
+//
+//                Toast.makeText(LoginActivity.this, "Throwable"+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+//            }
+//      });
 
 
     }

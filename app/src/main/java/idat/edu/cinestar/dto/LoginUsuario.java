@@ -6,33 +6,27 @@
 package idat.edu.cinestar.dto;
 
 
+import com.google.gson.annotations.SerializedName;
+
 public class LoginUsuario {
 
-    private String nombreUsuario;
+    private String usuario;
 
-    private String password;
+    private String clave;
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getPassword() {
-        return password;
+    public String getClave() {
+        return clave;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "LoginUsuario{" +
-                "nombreUsuario='" + nombreUsuario + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 }

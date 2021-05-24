@@ -5,13 +5,23 @@
  */
 package idat.edu.cinestar.dto;
 
-import java.util.Collection;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-public class JwtDto {
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+
+public class JwtDto implements Serializable {
+
+
     private String token;
-    private String bearer = "Bearer";
+
+    private String bearer;
+
     private String nombreUsuario;
-//    private Collection<? extends GrantedAuthority> authorities;
+
+    public List<String> authorities;
 
 //    public JwtDto(String token, String nombreUsuario, Collection<? extends GrantedAuthority> authorities) {
 //        this.token = token;
@@ -50,4 +60,14 @@ public class JwtDto {
 //    public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 //        this.authorities = authorities;
 //    }
+
+
+    @Override
+    public String toString() {
+        return "JwtDto{" +
+                "token='" + token + '\'' +
+                ", bearer='" + bearer + '\'' +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                '}';
+    }
 }
