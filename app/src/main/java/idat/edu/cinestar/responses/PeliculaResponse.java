@@ -18,7 +18,7 @@ public class PeliculaResponse {
 
     private Boolean estado;
 
-    private Byte[] imagen;
+    private byte[] imagen;
 
     public Integer getIdPelicula() {
         return idPelicula;
@@ -84,11 +84,11 @@ public class PeliculaResponse {
         this.estado = estado;
     }
 
-    public Byte[] getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(Byte[] imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 }

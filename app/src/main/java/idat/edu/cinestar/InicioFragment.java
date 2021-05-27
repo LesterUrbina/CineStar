@@ -35,8 +35,6 @@ import static androidx.core.content.ContextCompat.getSystemService;
 
 public class InicioFragment extends Fragment {
 
-    Retrofit retrofit;
-
     public InicioFragment() {
         // Required empty public constructor
     }
@@ -52,7 +50,6 @@ public class InicioFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        populatePelicula();
         RecyclerView rcvPromocion = view.findViewById(R.id.rcvPromocion);
         rcvPromocion.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -64,23 +61,8 @@ public class InicioFragment extends Fragment {
 
         PromocionAdapter adapter = new PromocionAdapter(promocion);
         rcvPromocion.setAdapter(adapter);
-
     }
 
-    private void populatePelicula() {
-        retrofit = RetrofitUtil.getInstance();
-        Call<ApiResponse<List<PeliculaResponse>>> peliculaCall = RetrofitUtil.getApiService(PeliculaService.class).findAll();
-        peliculaCall.enqueue(new Callback<ApiResponse<List<PeliculaResponse>>>() {
-            @Override
-            public void onResponse(Call<ApiResponse<List<PeliculaResponse>>> call, Response<ApiResponse<List<PeliculaResponse>>> response) {
-                System.out.println(response.body().getData());
-            }
 
-            @Override
-            public void onFailure(Call<ApiResponse<List<PeliculaResponse>>> call, Throwable t) {
-                System.out.println(t.getMessage());
-            }
-        });
-    }
 
 }

@@ -13,16 +13,17 @@ import java.util.List;
 
 import idat.edu.cinestar.R;
 import idat.edu.cinestar.entity.Peliculas;
+import idat.edu.cinestar.responses.PeliculaResponse;
 
 public class CarteleraAdapter extends RecyclerView.Adapter<CarteleraViewHolder> {
 
-    private List<Peliculas> peliculas;
+    private List<PeliculaResponse> peliculas;
 
     public CarteleraAdapter(){
         this.peliculas= new ArrayList<>();
     }
 
-    public CarteleraAdapter(List<Peliculas> peliculas) {
+    public CarteleraAdapter(List<PeliculaResponse> peliculas) {
         this.peliculas = peliculas;
     }
 
@@ -39,7 +40,7 @@ public class CarteleraAdapter extends RecyclerView.Adapter<CarteleraViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CarteleraViewHolder holder, int position) {
 
-        Peliculas pelicula = peliculas.get(position);
+        PeliculaResponse pelicula = peliculas.get(position);
         holder.loadData(pelicula);
     }
 

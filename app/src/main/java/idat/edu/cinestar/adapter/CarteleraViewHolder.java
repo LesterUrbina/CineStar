@@ -8,7 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import idat.edu.cinestar.R;
-import idat.edu.cinestar.entity.Peliculas;
+import idat.edu.cinestar.responses.PeliculaResponse;
+import idat.edu.cinestar.utils.ByteUtil;
 
 public class CarteleraViewHolder extends RecyclerView.ViewHolder {
 
@@ -19,14 +20,16 @@ public class CarteleraViewHolder extends RecyclerView.ViewHolder {
     public CarteleraViewHolder(@NonNull View itemView) {
         super(itemView);
 
-       /* imgPelicula = itemView.findViewById(R.id.imgPelicula);
-        txtPelicula= itemView.findViewById(R.id.txtPelicula);
-        txtPelicula= itemView.findViewById(R.id.txtSinopsis);*/
+        imgPelicula = itemView.findViewById(R.id.imgPelicula);
+        txtPelicula = itemView.findViewById(R.id.txtPelicula);
+        txtSinopsis = itemView.findViewById(R.id.txtSinopsis);
     }
 
-    public void loadData(Peliculas pelicula) {
-    /*   imgPelicula.setImageResource(pelicula.getImagenId());
+    public void loadData(PeliculaResponse pelicula) {
+        imgPelicula.setImageBitmap(ByteUtil.byteArrayToBitmap(pelicula.getImagen()));
         txtPelicula.setText(pelicula.getNombre());
-        txtSinopsis.setText(pelicula.getSinopsis());*/
+        txtSinopsis.setText(pelicula.getSinapsis());
     }
+
+
 }
