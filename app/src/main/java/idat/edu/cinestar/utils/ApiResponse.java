@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.time.LocalDateTime;
 
-public class ApiResponse {
+public class ApiResponse<T> {
 
     private Boolean error;
 
@@ -17,7 +17,7 @@ public class ApiResponse {
 
     private String fecha;
 
-    private Object data;
+    private T data;
 
     public String getFecha() {
         return fecha;
@@ -59,11 +59,11 @@ public class ApiResponse {
         this.mensaje = mensaje;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }

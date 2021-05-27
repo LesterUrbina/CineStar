@@ -14,11 +14,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import idat.edu.cinestar.adapter.PromocionAdapter;
+import idat.edu.cinestar.entity.Peliculas;
 import idat.edu.cinestar.entity.Promocion;
+import idat.edu.cinestar.responses.PeliculaResponse;
 import idat.edu.cinestar.utils.ApiResponse;
 import idat.edu.cinestar.utils.RetrofitUtil;
 import retrofit2.Call;
@@ -65,16 +69,15 @@ public class InicioFragment extends Fragment {
 
     private void populatePelicula() {
         retrofit = RetrofitUtil.getInstance();
-        Call<ApiResponse> peliculaCall = RetrofitUtil.getApiService(PeliculaService.class).findAll();
-        peliculaCall.enqueue(new Callback<ApiResponse>() {
+        Call<ApiResponse<List<PeliculaResponse>>> peliculaCall = RetrofitUtil.getApiService(PeliculaService.class).findAll();
+        peliculaCall.enqueue(new Callback<ApiResponse<List<PeliculaResponse>>>() {
             @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+            public void onResponse(Call<ApiResponse<List<PeliculaResponse>>> call, Response<ApiResponse<List<PeliculaResponse>>> response) {
                 System.out.println(response.body().getData());
-
             }
 
             @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
+            public void onFailure(Call<ApiResponse<List<PeliculaResponse>>> call, Throwable t) {
                 System.out.println(t.getMessage());
             }
         });
