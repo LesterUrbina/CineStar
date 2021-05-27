@@ -42,8 +42,6 @@ public class LoginActivity extends AppCompatActivity {
     private MaterialButton btnLogin;
     private MaterialButton btnSignin;
 
-    private ApiClient apiClient;
-    private Retrofit retrofit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +52,12 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnSignin = findViewById(R.id.btnSignin);
 
+        btnSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RegistroActivity.class));
+            }
+        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,8 +111,6 @@ public class LoginActivity extends AppCompatActivity {
         LoginUsuario loginUsuario = new LoginUsuario();
         loginUsuario.setUsuario(edtUsername.getText().toString());
         loginUsuario.setClave(edtPassword.getText().toString());
-        apiClient = new ApiClient();
-        retrofit = RetrofitUtil.getInstance();
         Call<ApiResponse> loginUsuarioResponseCall = RetrofitUtil.getApiService(UserService.class).userLogin(loginUsuario);
         loginUsuarioResponseCall.enqueue(new Callback<ApiResponse>() {
             @Override

@@ -2,6 +2,7 @@ package idat.edu.cinestar;
 
 
 import idat.edu.cinestar.dto.LoginUsuario;
+import idat.edu.cinestar.dto.NuevoUsuario;
 import idat.edu.cinestar.utils.ApiResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -13,4 +14,8 @@ public interface UserService {
     @Headers({"Accept: application/json"})
     @POST("auth/login")
    Call<ApiResponse> userLogin(@Body LoginUsuario loginUsuario);
+
+    @Headers({"Accept: application/json"})
+    @POST("auth/nuevo")
+    Call<ApiResponse> registro(@Body NuevoUsuario nuevoUsuario);
 }
