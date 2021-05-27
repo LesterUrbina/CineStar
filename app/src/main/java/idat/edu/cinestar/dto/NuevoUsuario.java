@@ -7,11 +7,11 @@ public class NuevoUsuario {
 
     private String nombre;
 
-    private String nombreUsuario;
+    private String usuario;
 
-    private String email;
+    private String correo;
 
-    private String password;
+    private String clave;
     private Set<String> roles = new HashSet<>();
 
     public String getNombre() {
@@ -22,28 +22,28 @@ public class NuevoUsuario {
         this.nombre = nombre;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getPassword() {
-        return password;
+    public String getClave() {
+        return clave;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public Set<String> getRoles() {
