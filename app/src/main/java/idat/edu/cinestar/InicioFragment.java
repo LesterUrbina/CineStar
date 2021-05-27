@@ -19,12 +19,19 @@ import java.util.List;
 
 import idat.edu.cinestar.adapter.PromocionAdapter;
 import idat.edu.cinestar.entity.Promocion;
+import idat.edu.cinestar.utils.ApiResponse;
+import idat.edu.cinestar.utils.RetrofitUtil;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
 
 public class InicioFragment extends Fragment {
 
+    Retrofit retrofit;
 
     public InicioFragment() {
         // Required empty public constructor
@@ -41,6 +48,7 @@ public class InicioFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        populatePelicula();
         RecyclerView rcvPromocion = view.findViewById(R.id.rcvPromocion);
         rcvPromocion.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -53,7 +61,23 @@ public class InicioFragment extends Fragment {
         PromocionAdapter adapter = new PromocionAdapter(promocion);
         rcvPromocion.setAdapter(adapter);
 
-
-
     }
+
+    private void populatePelicula() {
+        retrofit = RetrofitUtil.getInstance();
+        Call<ApiResponse> peliculaCall = RetrofitUtil.getApiService(PeliculaService.class).findAll();
+        peliculaCall.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                System.out.println(response.body().getData());
+
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
 }

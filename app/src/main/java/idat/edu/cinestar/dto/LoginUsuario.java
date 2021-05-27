@@ -6,12 +6,19 @@
 package idat.edu.cinestar.dto;
 
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginUsuario {
+import java.io.Serializable;
 
+public class LoginUsuario implements Serializable {
+
+    @SerializedName("usuario")
+    @Expose
     private String usuario;
 
+    @SerializedName("clave")
+    @Expose
     private String clave;
 
     public String getUsuario() {
