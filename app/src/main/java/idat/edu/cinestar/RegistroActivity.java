@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
+import javax.xml.transform.sax.SAXSource;
+
 import idat.edu.cinestar.dto.NuevoUsuario;
 import idat.edu.cinestar.utils.ApiResponse;
 import idat.edu.cinestar.utils.RetrofitUtil;
@@ -63,6 +65,7 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 System.out.println(response.body().getData());
+                
             }
 
             @Override
