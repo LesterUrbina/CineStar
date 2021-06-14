@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import idat.edu.cinestar.adapter.CarteleraAdapter;
+import idat.edu.cinestar.dto.TbPelicula;
 import idat.edu.cinestar.entity.Peliculas;
 
 
@@ -47,8 +48,12 @@ public class CarteleraFragment extends Fragment {
         peliculas.add(new Peliculas(3,"Lobas","Un asesinato por descubrir..",R.drawable.pelicula3));
         peliculas.add(new Peliculas(4,"Avatar","Un asesinato por descubrir..",R.drawable.pelicula4));
 
-
         CarteleraAdapter adapter = new CarteleraAdapter(peliculas);
         rcvCartelera.setAdapter(adapter);
+    }
+
+    public void tbPeliculas()
+    {
+        TbPelicula tbPelicula = new TbPelicula();
     }
 }

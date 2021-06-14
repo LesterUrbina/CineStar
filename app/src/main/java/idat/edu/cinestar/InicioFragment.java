@@ -1,5 +1,6 @@
 package idat.edu.cinestar;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +24,9 @@ import java.util.List;
 import idat.edu.cinestar.adapter.PromocionAdapter;
 import idat.edu.cinestar.entity.Peliculas;
 import idat.edu.cinestar.entity.Promocion;
+import idat.edu.cinestar.responses.PeliculaCustomResponse;
 import idat.edu.cinestar.responses.PeliculaResponse;
+import idat.edu.cinestar.services.PeliculaService;
 import idat.edu.cinestar.utils.ApiResponse;
 import idat.edu.cinestar.utils.RetrofitUtil;
 import retrofit2.Call;
@@ -46,13 +50,14 @@ public class InicioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        populatePelicula();
         return inflater.inflate(R.layout.fragment_inicio, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        populatePelicula();
+
         RecyclerView rcvPromocion = view.findViewById(R.id.rcvPromocion);
         rcvPromocion.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -69,15 +74,15 @@ public class InicioFragment extends Fragment {
 
     private void populatePelicula() {
         retrofit = RetrofitUtil.getInstance();
-        Call<ApiResponse<List<PeliculaResponse>>> peliculaCall = RetrofitUtil.getApiService(PeliculaService.class).findAll();
-        peliculaCall.enqueue(new Callback<ApiResponse<List<PeliculaResponse>>>() {
+        Call<ApiResponse<List<PeliculaCustomResponse>>> peliculaCall = RetrofitUtil.getApiService(PeliculaService.class).findAllCustom();
+        peliculaCall.enqueue(new Callback<ApiResponse<List<PeliculaCustomResponse>>>() {
             @Override
-            public void onResponse(Call<ApiResponse<List<PeliculaResponse>>> call, Response<ApiResponse<List<PeliculaResponse>>> response) {
+            public void onResponse(Call<ApiResponse<List<PeliculaCustomResponse>>> call, Response<ApiResponse<List<PeliculaCustomResponse>>> response) {
                 System.out.println(response.body().getData());
             }
 
             @Override
-            public void onFailure(Call<ApiResponse<List<PeliculaResponse>>> call, Throwable t) {
+            public void onFailure(Call<ApiResponse<List<PeliculaCustomResponse>>> call, Throwable t) {
                 System.out.println(t.getMessage());
             }
         });

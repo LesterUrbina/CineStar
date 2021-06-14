@@ -16,17 +16,18 @@ public class CarteleraViewHolder extends RecyclerView.ViewHolder {
     private TextView txtPelicula,txtSinopsis;
 
 
+
     public CarteleraViewHolder(@NonNull View itemView) {
         super(itemView);
 
-       /* imgPelicula = itemView.findViewById(R.id.imgPelicula);
+       imgPelicula = itemView.findViewById(R.id.imgPelicula);
         txtPelicula= itemView.findViewById(R.id.txtPelicula);
-        txtPelicula= itemView.findViewById(R.id.txtSinopsis);*/
+        txtSinopsis= itemView.findViewById(R.id.txtSinopsis);
     }
 
     public void loadData(Peliculas pelicula) {
-    /*   imgPelicula.setImageResource(pelicula.getImagenId());
+      imgPelicula.setImageResource(pelicula.getImagenId());
         txtPelicula.setText(pelicula.getNombre());
-        txtSinopsis.setText(pelicula.getSinopsis());*/
+        txtSinopsis.setText(pelicula.getSinopsis());
     }
 }

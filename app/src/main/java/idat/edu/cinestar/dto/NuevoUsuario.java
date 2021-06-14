@@ -12,6 +12,7 @@ public class NuevoUsuario {
     private String correo;
 
     private String clave;
+
     private Set<String> roles = new HashSet<>();
 
     public String getNombre() {

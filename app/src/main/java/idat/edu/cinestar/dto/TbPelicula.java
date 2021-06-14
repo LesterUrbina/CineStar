@@ -1,6 +1,11 @@
-package idat.edu.cinestar.responses;
+package idat.edu.cinestar.dto;
 
-public class PeliculaResponse {
+import java.io.Serializable;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
+
+public class TbPelicula implements Serializable {
 
     private Integer idPelicula;
 
@@ -10,13 +15,17 @@ public class PeliculaResponse {
 
     private String sinopsis;
 
-    private String duracion;
+    private Duration duracion;
 
     private String tipoPelicula;
 
     private Boolean estado;
 
-    private String imagen;
+    private byte[] imagen;
+
+    private List<String> peliculaGeneros;
+
+    private List<String> funciones;
 
     public Integer getIdPelicula() {
         return idPelicula;
@@ -50,11 +59,11 @@ public class PeliculaResponse {
         this.sinopsis = sinopsis;
     }
 
-    public String getDuracion() {
+    public Duration getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(String duracion) {
+    public void setDuracion(Duration duracion) {
         this.duracion = duracion;
     }
 
@@ -74,11 +83,27 @@ public class PeliculaResponse {
         this.estado = estado;
     }
 
-    public String getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
+    }
+
+    public List<String> getPeliculaGeneros() {
+        return peliculaGeneros;
+    }
+
+    public void setPeliculaGeneros(List<String> peliculaGeneros) {
+        this.peliculaGeneros = peliculaGeneros;
+    }
+
+    public List<String> getFunciones() {
+        return funciones;
+    }
+
+    public void setFunciones(List<String> funciones) {
+        this.funciones = funciones;
     }
 }

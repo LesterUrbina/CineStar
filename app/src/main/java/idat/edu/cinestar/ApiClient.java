@@ -2,6 +2,7 @@ package idat.edu.cinestar;
 
 import android.content.Context;
 
+import idat.edu.cinestar.services.UserService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;

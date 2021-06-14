@@ -7,9 +7,12 @@ package idat.edu.cinestar.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.internal.LinkedTreeMap;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class JwtDto implements Serializable {
@@ -21,13 +24,7 @@ public class JwtDto implements Serializable {
 
     private String nombreUsuario;
 
-    private List<String> authorities;
-
-//    public JwtDto(String token, String nombreUsuario, Collection<? extends GrantedAuthority> authorities) {
-//        this.token = token;
-//        this.nombreUsuario = nombreUsuario;
-//        this.authorities = authorities;
-//    }
+    private List<LinkedHashMap<String, String>> authorities;
 
     public String getToken() {
         return token;
@@ -53,21 +50,13 @@ public class JwtDto implements Serializable {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public List<String> getAuthorities() {
+    public List<LinkedHashMap<String, String>> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(List<String> authorities) {
+    public void setAuthorities(List<LinkedHashMap<String, String>> authorities) {
         this.authorities = authorities;
     }
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return authorities;
-//    }
-//
-//    public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-//        this.authorities = authorities;
-//    }
-
 
     @Override
     public String toString() {

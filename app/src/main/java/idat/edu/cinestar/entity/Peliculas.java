@@ -7,14 +7,17 @@ public class Peliculas {
     private String sinopsis;
     private int imagenId;
 
+    public Peliculas() {
+    }
 
+    /*
     public Peliculas() {
         this.idPelicula=0;
         this.nombre="";
         this.sinopsis="";
         this.imagenId=0;
     }
-
+*/
     public Peliculas(int idPelicula, String nombre) {
         this.idPelicula = idPelicula;
         this.nombre = nombre;

@@ -1,6 +1,7 @@
-package idat.edu.cinestar;
+package idat.edu.cinestar.services;
 
 
+import idat.edu.cinestar.dto.JwtDto;
 import idat.edu.cinestar.dto.LoginUsuario;
 import idat.edu.cinestar.dto.NuevoUsuario;
 import idat.edu.cinestar.utils.ApiResponse;
@@ -13,7 +14,7 @@ public interface UserService {
 
     @Headers({"Accept: application/json"})
     @POST("auth/login")
-   Call<ApiResponse> userLogin(@Body LoginUsuario loginUsuario);
+   Call<ApiResponse<JwtDto>> userLogin(@Body LoginUsuario loginUsuario);
 
     @Headers({"Accept: application/json"})
     @POST("auth/nuevo")
