@@ -39,8 +39,6 @@ import static androidx.core.content.ContextCompat.getSystemService;
 
 public class InicioFragment extends Fragment {
 
-    Retrofit retrofit;
-
     public InicioFragment() {
         // Required empty public constructor
     }
@@ -57,7 +55,10 @@ public class InicioFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 43eaa268ecd634ab6d67cedfb61a929598c95041
         RecyclerView rcvPromocion = view.findViewById(R.id.rcvPromocion);
         rcvPromocion.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -69,9 +70,9 @@ public class InicioFragment extends Fragment {
 
         PromocionAdapter adapter = new PromocionAdapter(promocion);
         rcvPromocion.setAdapter(adapter);
-
     }
 
+<<<<<<< HEAD
     private void populatePelicula() {
         retrofit = RetrofitUtil.getInstance();
         Call<ApiResponse<List<PeliculaCustomResponse>>> peliculaCall = RetrofitUtil.getApiService(PeliculaService.class).findAllCustom();
@@ -87,5 +88,8 @@ public class InicioFragment extends Fragment {
             }
         });
     }
+=======
+
+>>>>>>> 43eaa268ecd634ab6d67cedfb61a929598c95041
 
 }

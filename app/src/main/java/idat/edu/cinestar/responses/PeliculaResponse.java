@@ -16,7 +16,11 @@ public class PeliculaResponse {
 
     private Boolean estado;
 
+<<<<<<< HEAD
     private String imagen;
+=======
+    private byte[] imagen;
+>>>>>>> 43eaa268ecd634ab6d67cedfb61a929598c95041
 
     public Integer getIdPelicula() {
         return idPelicula;
@@ -74,11 +78,19 @@ public class PeliculaResponse {
         this.estado = estado;
     }
 
+<<<<<<< HEAD
     public String getImagen() {
         return imagen;
     }
 
     public void setImagen(String imagen) {
+=======
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+>>>>>>> 43eaa268ecd634ab6d67cedfb61a929598c95041
         this.imagen = imagen;
     }
 }
